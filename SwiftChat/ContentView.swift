@@ -98,6 +98,8 @@ struct ContentView: View {
             var tokensReceived = 0
             let begin = Date()
             do {
+                let config = self.config
+                let prompt = self.prompt
                 let output = try await languageModel.generate(config: config, prompt: prompt) { inProgressGeneration in
                     tokensReceived += 1
                     showOutput(currentGeneration: inProgressGeneration, progress: Double(tokensReceived)/Double(config.maxNewTokens))
